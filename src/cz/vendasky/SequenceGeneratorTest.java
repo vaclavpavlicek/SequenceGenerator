@@ -1,8 +1,9 @@
 package cz.vendasky;
 
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.junit.Assert.*;
 
 public class SequenceGeneratorTest {
     SequenceGenerator generator;
@@ -15,12 +16,17 @@ public class SequenceGeneratorTest {
     @Test
     public void shouldReturnNextSequence() {
         generator.nextSequence();
-        Assert.assertEquals("11", this.generator.getSequence());
+        assertEquals("11", this.generator.getSequence());
     }
 
     @Test
     public void shouldGenerateRequiredSequence() {
         generator.generateRequiredSequence();
-        Assert.assertEquals("1113213211", this.generator.getSequence());
+        assertEquals("1113213211", this.generator.getSequence());
+    }
+
+    @Test
+    public void shouldReadFromInputFile() {
+        assertEquals("14 1000", SequenceGenerator.readFromInputFile("/home/vaclav/IdeaProjects/SequenceGenerator/inputs/01.in"));
     }
 }

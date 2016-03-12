@@ -1,5 +1,9 @@
 package cz.vendasky;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
 public class SequenceGenerator {
     private int countOfRequiredNumbers;
     private int positionOfSequence;
@@ -44,4 +48,15 @@ public class SequenceGenerator {
             this.nextSequence();
         }
     }
+
+    public static String readFromInputFile(String pathToFile) {
+        String line = null;
+        try (BufferedReader reader = new BufferedReader(new FileReader(pathToFile))) {
+            line = reader.readLine();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return line;
+    }
+
 }
