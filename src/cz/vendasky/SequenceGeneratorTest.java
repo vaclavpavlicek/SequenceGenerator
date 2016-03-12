@@ -7,17 +7,20 @@ import org.junit.Test;
 public class SequenceGeneratorTest {
     SequenceGenerator generator;
 
-    public SequenceGeneratorTest() {
-    }
-
     @Before
     public void setUp() {
-        this.generator = new SequenceGenerator(8, 10);
+        generator = new SequenceGenerator(10, 8);
     }
 
     @Test
     public void shouldReturnNextSequence() {
-        this.generator.nextSequence();
+        generator.nextSequence();
         Assert.assertEquals("11", this.generator.getSequence());
+    }
+
+    @Test
+    public void shouldGenerateRequiredSequence() {
+        generator.generateRequiredSequence();
+        Assert.assertEquals("1113213211", this.generator.getSequence());
     }
 }
