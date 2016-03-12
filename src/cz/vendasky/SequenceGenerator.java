@@ -59,4 +59,10 @@ public class SequenceGenerator {
         return line;
     }
 
+    public static SequenceGenerator generateSequenceGenerator(String pathToInputFile) {
+        String line = readFromInputFile(pathToInputFile);
+        int countOfRequiredNumbers = Integer.parseInt(line.substring(0, line.indexOf(" ")));
+        int positionOfSequence = Integer.parseInt(line.substring(line.indexOf(" ") + 1));
+        return new SequenceGenerator(countOfRequiredNumbers, positionOfSequence);
+    }
 }

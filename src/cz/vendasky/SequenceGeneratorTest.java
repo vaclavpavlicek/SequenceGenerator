@@ -29,4 +29,9 @@ public class SequenceGeneratorTest {
     public void shouldReadFromInputFile() {
         assertEquals("14 1000", SequenceGenerator.readFromInputFile("/home/vaclav/IdeaProjects/SequenceGenerator/inputs/01.in"));
     }
+
+    @Test
+    public void shouldCreateSequenceGenerator() {
+        assertNotNull(SequenceGenerator.generateSequenceGenerator("/home/vaclav/IdeaProjects/SequenceGenerator/inputs/01.in"));
+    }
 }
