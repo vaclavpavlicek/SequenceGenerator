@@ -16,14 +16,18 @@ public class SequenceGenerator {
 
     public void nextSequence() {
         int countOfNumbers = 0;
-        String actualNumber = this.sequence.substring(0, 1);
+        int actualNumber = Integer.parseInt(this.sequence.substring(0, 1));
         String newSequence = "";
-        for(int i = 0; i < this.sequence.length(); ++i) {
-            if(this.sequence.substring(i, i + 1).equals(actualNumber)) {
-                ++countOfNumbers;
+        for(int i = 0; i < this.sequence.length(); i++) {
+            if(Integer.parseInt(this.sequence.substring(i, i + 1)) == actualNumber) {
+                countOfNumbers++;
             } else {
-                newSequence = newSequence + countOfNumbers + actualNumber;
-                actualNumber = this.sequence.substring(i, i + 1);
+                newSequence += 10 * countOfNumbers + actualNumber;
+                if (newSequence.length() >= countOfRequiredNumbers) {
+                    this.sequence = newSequence.substring(0, countOfRequiredNumbers);
+                    return;
+                }
+                actualNumber = Integer.parseInt(sequence.substring(i, i + 1));
                 countOfNumbers = 1;
             }
         }
@@ -32,7 +36,7 @@ public class SequenceGenerator {
             this.sequence = newSequence.substring(0, countOfRequiredNumbers);
         } else {
             this.sequence = newSequence;
-        }                
+        }
     }
 
     public String getSequence() {
